@@ -8,7 +8,7 @@ app.use(morgan("tiny"));
 app.use(cors());
 app.use(express.json());
 
-app.use(express.static("react-page/dist"));
+app.use(express.static(__dirname + "/react-page/dist"));
 
 app.get("/", (req, res) => {
   res.sendFile("index.html");
