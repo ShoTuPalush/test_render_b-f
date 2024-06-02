@@ -13,7 +13,7 @@ app.use(express.static(__dirname + "/react-page/dist"));
 app.get("/", (req, res) => {
   res.sendFile("index.html");
 });
-app.use("/aaa", (req, res) => {
+app.get("/aaa", (req, res) => {
   res.json({ ok: true });
 });
 

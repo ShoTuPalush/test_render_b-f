@@ -1,10 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import axios from "axios";
+
+const fetchInfo = async () => {
+  const response = await axios.get(`https://test-render-b-f.onrender.com/aaa`);
+  return response.data;
+};
 
 function App() {
   const [count, setCount] = useState(0);
+  useEffect(() => {
+    const FetchMovies = async () => {
+      try {
+        const response = await fetchInfo();
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    FetchMovies();
+  }, []);
 
   return (
     <>
