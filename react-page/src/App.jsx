@@ -5,7 +5,9 @@ import "./App.css";
 import axios from "axios";
 
 const fetchInfo = async () => {
-  const response = await axios.get(`https://test-render-b-f.onrender.com/aaa`);
+  const response = await axios.get(
+    `https://test-render-b-f.onrender.com/api/aaa`
+  );
   return response.data;
 };
 
