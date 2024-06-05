@@ -1,61 +1,61 @@
 import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+// import reactLogo from "./assets/react.svg";
+// import viteLogo from "/vite.svg";
 import "./App.css";
 import axios from "axios";
-import { nanoid } from "nanoid";
+// import { nanoid } from "nanoid";
 
-const fetchInfo = async () => {
-  const response = await axios.get(
-    `https://test-render-b-f.onrender.com/api/aaa`
-  );
-  return response.data;
-};
+import Editor from "./components/editor/Editor";
+import EditorTextParser from "./components/editor-parser/EditorTextParser";
+import jsona from "./components/editor/data/exampleData.json";
+
+// const fetchInfo = async () => {
+//   const response = await axios.get(
+//     `https://test-render-b-f.onrender.com/api/aaa`
+//   );
+//   return response.data;
+// };
 
 function App() {
-  console.log(nanoid());
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    const FetchMovies = async () => {
-      try {
-        const response = await fetchInfo();
-        console.log(response);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    FetchMovies();
-  }, []);
+  // useEffect(() => {
+  //   const FetchMovies = async () => {
+  //     try {
+  //       const response = await fetchInfo();
+  //       console.log(response);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   FetchMovies();
+  // }, []);
+
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [data, setData] = useState(jsona);
+
+  function toggleEditMode() {
+    if (isEditMode) {
+      setIsEditMode(false);
+      console.log("Edit mode is now disabled");
+    } else {
+      setIsEditMode(true);
+      console.log("Edit mode is now enabled");
+    }
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="App">
+      <button id="toggle-edit-btn" onClick={toggleEditMode}>
+        Toggle Edit Mode
+      </button>
+
+      <div className="app-content">
+        {isEditMode ? (
+          <Editor data={data} setData={setData} />
+        ) : (
+          <EditorTextParser data={data} />
+        )}
       </div>
-      <h1>Vite + React</h1>
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati,
-        repudiandae eligendi, quo quod beatae ex, natus nemo corporis earum
-        expedita ut aspernatur facere sed inventore commodi omnis! Numquam,
-        veniam ipsa!
-      </p>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   );
 }
 
