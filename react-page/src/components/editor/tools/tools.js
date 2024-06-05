@@ -2,7 +2,6 @@
 import Embed from "@editorjs/embed";
 import Table from "@editorjs/table";
 import List from "@editorjs/list";
-import Paragraph from "@editorjs/paragraph";
 import Warning from "@editorjs/warning";
 import Code from "@editorjs/code";
 import LinkTool from "@editorjs/link";
@@ -17,8 +16,6 @@ import InlineCode from "@editorjs/inline-code";
 import SimpleImage from "@editorjs/simple-image";
 
 export const EDITOR_JS_TOOLS = {
-  // NOTE: Paragraph is default tool. Declare only when you want to change paragraph option.
-  // paragraph: Paragraph,
   embed: Embed,
   table: Table,
   list: List,
