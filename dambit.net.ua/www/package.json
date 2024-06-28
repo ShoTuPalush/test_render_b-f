@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "start": "node ./app.js",
+    "frintI":"npm install --prefix react-page",
     "dev": "nodemon ./app.js",
     "build": "npm run build --prefix react-page"
   },
